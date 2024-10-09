@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AISearch - Professional Search Engine</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script>
+    async function performSearch(query) {
+      const response = await fetch(`/search/?query=${query}`);
+      const data = await response.json();
+      displayResults(data.relevant_documents);
+    }
+
+    function displayResults(results) {
+      const resultsSection = document.querySelector('.results-section .container');
+      resultsSection.innerHTML = '';  // Clear previous results
+      results.forEach(result => {
+        const resultItem = document.createElement('div');
+        resultItem.classList.add('result-item');
+        resultItem.innerHTML = `
+          <h4 class="result-title">
+            <a href="/document/${result.id}" class="result-link">${result.title}</a>
+          </h4>
+          <p class="result-snippet">${result.snippet}</p>
+        `;
+        resultsSection.appendChild(resultItem);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      performSearch('example');  // Default search on load
+    });
+  </script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    /* Navigation Bar */
+    .header {
+      background-color: #343a40;
+      padding: 20px;
+    }
+
+    .logo {
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    /* Search Section */
+    .search-section {
+      padding: 50px 0;
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+    }
+
+    .search-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    .search-box {
+      display: inline-block;
+      width: 60%;
+    }
+
+    .search-input {
+      padding: 15px;
+      width: 70%;
+      font-size: 1.2rem;
+      border: 1px solid #ddd;
+      border-radius: 50px 0 0 50px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      border-color: #0056b3;
+    }
+
+    .search-button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      background-color: #0056b3;
+      color: white;
+      cursor: pointer;
+      border-radius: 0 50px 50px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-button:hover {
+      background-color: #003d80;
+    }
+
+    /* Results Section */
+    .results-section {
+      padding: 30px 0;
+      background-color: #ffffff;
+    }
+
+    .results-section .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .result-item {
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      background-color: #f1f3f5;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .result-item:hover {
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .result-title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .result-link {
+      text-decoration: none;
+      color: #007bff;
+      transition: color 0.3s ease;
+    }
+
+    .result-link:hover {
+      color: #0056b3;
+    }
+
+    .result-snippet {
+      font-size: 1rem;
+      color: #6c757d;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #343a40;
+      padding: 20px 0;
+      color: white;
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .search-box {
+        width: 90%;
+      }
+
+      .search-input {
+        width: 65%;
+      }
+
+      .search-button {
+        width: 35%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">AISearch</h1>
+    </div>
+  </header>
+
+  <!-- Search Bar Section -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-box">
+        <h2>Find What You’re Looking For</h2>
+        <input type="text" placeholder="Search..." class="search-input" id="search-input">
+        <button type="button" class="search-button" onclick="performSearch(document.getElementById('search-input').value)">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="results-section">
+    <div class="container">
+      <!-- Search results will be dynamically inserted here -->
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+  
+    </div>
+  </footer>
+</body>
+</html>
