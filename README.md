@@ -1,11 +1,13 @@
 # Search Engine
 
 This project implements a search engine using Retrieval and vector database with FastAPI for the backend, SQLAlchemy for database interactions, and Jinja2 for rendering a simple web interface. The search engine retrieves relevant documents and generates responses based on those documents, providing users with accurate and contextually relevant answers.
+![DEMO](search.gif)
 
 ## Table of Contents
 
 - [Features](#features)
 - [Technologies Used](#technologies-used)
+- [Dataset](#dataset)
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
@@ -29,7 +31,8 @@ This project implements a search engine using Retrieval and vector database with
 - [LangChain](https://langchain.readthedocs.io/en/latest/) - Framework for building applications with LLMs.
 - [Pydantic](https://pydantic-docs.helpmanual.io/) - Data validation and settings management using Python type annotations.
 
-
+## Dataset
+Falah/arxiv-research-paper
 
 ## Installation
 
