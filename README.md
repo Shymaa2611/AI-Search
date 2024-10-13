@@ -50,15 +50,15 @@ pip install -r requirements.txt
 
 ## Usage
 
-    Start the FastAPI server:
-    ```
+Start the FastAPI server:
+```
     uvicorn app:app --reload
 ```
 2. Open your web browser and go to http://localhost:8000 to access the interface.
 
 3. Enter your query in the search bar and hit "Search" to retrieve results.
 
-API Endpoints
+## API Endpoints
 
     GET /: Renders the main search interface.
     POST /search: Accepts a search query and returns relevant documents and generated responses.
