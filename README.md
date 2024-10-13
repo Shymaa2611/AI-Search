@@ -52,7 +52,7 @@ pip install -r requirements.txt
 
 Start the FastAPI server:
 ```
-    uvicorn app:app --reload
+uvicorn app:app --reload
 ```
 2. Open your web browser and go to http://localhost:8000 to access the interface.
 
@@ -63,6 +63,7 @@ Start the FastAPI server:
     GET /: Renders the main search interface.
     POST /search: Accepts a search query and returns relevant documents and generated responses.
 
+```
 AI-Search/
 │
 ├── app/                      # Main application directory
@@ -76,3 +77,4 @@ AI-Search/
 ├── requirements.txt          # Required packages
 └── README.md                 # Project documentation
 └── model.ipynb               
+```
